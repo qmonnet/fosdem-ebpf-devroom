@@ -1,0 +1,102 @@
+eBPF Devroom Proposal
+
+eBPF is a technology originally developed to make the Linux kernel more programmable. It allows users to load safe and efficient programs into the kernel, to attach them to various hooks, and to run these programs on specific events to address multiple goals. When attached to kernel or user functions, eBPF brings visibility for tracing and monitoring. Attached to networking hooks, eBPF programs can encapsulate, redirect, drop, or forward packets, working in concert with the kernel stack. The BPF LSM makes it possible to implement security policies. Various other attach points provide new ways to bring programmability to the kernel.
+
+Today, eBPF is no longer limited to Linux: It extends to Windows, user space runtimes, and even hardware offloads. In parallel, the list of use cases and the number of related projects keep growing. Following the success of eBPF at conferences such as the virtual eBPF Summit and the Networking & BPF track at the Linux Plumbers Conference, we would like to propose a FOSDEM devroom dedicated to the work, tools, and use cases around eBPF.
+
+Topics of interest include (but are not limited to):
+
+- eBPF development: recent or proposed features (on Linux, on other platforms, or even cross-platforms), such as:
+    - eBPF program signing and supply chain security
+    - Profiling eBPF with eBPF
+    - eBPF-based process schedulers
+    - eBPF in storage devices
+    - eBPF verifier improvements or alternative implementations
+- Deep-dives on existing eBPF features
+- Working with eBPF: best practices, common mistakes, debugging, etc.
+- eBPF toolchain, for compiling, managing, debugging, packaging, and deploying eBPF programs and related objects
+- eBPF libraries, in C/C++, Go, Rust, or other languages
+- eBPF-based projects, related use cases
+- eBPF in the real world, production use cases and their impact
+- eBPF community efforts (documentation, standardisation, cross-platform initiatives)
+
+Coordinator's affinity to the topic of the devroom:
+
+I have been working on eBPF since its early days as user and contributor to the technology over three companies, using it for stateful packet processing (at 6WIND), working on eBPF hardware offload (at Netronome), and currently working on the datapath of the open-source Cilium software for eBPF-based networking, observability, and security in cloud-native environments (at Isovalent).
+
+I have authored 250+ eBPF-related patches in the kernel repository. I'm the maintainer of bpftool, a utility to manage eBPF programs and objects, and the author of rbpf, a Rust-based runtime (interpreter, x86 JIT-compiler) for eBPF. I've been involved in efforts to document and standardise eBPF. I've written about eBPF on my personal blog, company blog, ebpf.io blog, and LWN.net. I have talked about the technology multiple times in the past, including five times at FOSDEM.
+
+The co-organizers will be Florent Revest (from Google, contributing to eBPF in the Linux kernel, working in particular on the eBPF Linux Security Module), Michal Rostecki (from Deepfence, author of eBPF-based lockc and one of the main contributors to Aya, a Rust library for eBPF, and contributor to Cilium), and Daniel Borkmann (from Isovalent, co-author and co-maintainer of the eBPF subsystem in Linux, member of the BPF Steering Committee at the eBPF Foundation, working on Cilium as well).
+
+Why does it fit FOSDEM:
+
+eBPF complies well with the open source aspects of FOSDEM: Its whole ecosystem is open-source. eBPF programs themselves are usually GPL or GPL-compatible, so they can interface with the Linux kernel. All known runtimes (even for hardware offloads) are open-source, and so are the majority of the projects using eBPF.
+
+eBPF is of interest to a vast and growing number of users. The number of open-source projects based on the technology keeps expanding (see https://ebpf.io/applications/), and an increasing number of platforms can run it: Linux, Windows, user space runtimes, hardware offloads, and likely more to come. Similarly, adoption within the industry is growing fast. The numerous use cases for eBPF overlap with more and more topics that have proved relevant to FOSDEM in the past: monitoring, networking, containers, security, LLVM/tooling, Go and Rust programming (see the list of previous FOSDEM talks in the “Relevant URLs” section), to the point that it now makes sense to propose a dedicated devroom.
+
+eBPF is also under active development and its infrastructure keeps evolving. Recent features in Linux include dynamic pointers, memory allocator, new program types, better support for loops, etc., and the Windows project is closing the gap. Multiple projects are under active development, and new eBPF-based projects keep emerging. Therefore, there is a strong interest in the eBPF community to gather and talk, to discuss the progress of the various projects, and to share with all the people who may be interested—making it a great fit for FOSDEM.
+
+Relevant URLs:
+
+- eBPF website: https://ebpf.io
+
+- Non-exhaustive list of eBPF-based projects: https://ebpf.io/applications
+
+- Other eBPF-related conferences (excerpt):
+    - eBPF Summit 2022 (https://ebpf.io/summit-2022/)
+    - Linux Plumbers 2022, eBPF & Networking track (https://lpc.events/event/16/sessions/131/#all)
+    - Cloud-Native eBPF Day NA 2022 (https://events.linuxfoundation.org/cloud-native-ebpf-day-north-america/program/schedule/)
+
+- Daniel Borkmann's keynote at the eBPF Summit 2022, on recent and future innovations for eBPF: https://www.youtube.com/watch?v=0YqF45Kaapo&t=14552s
+
+- List of previous BPF-related talks at FOSDEM (we probably missed a few):
+
+    - 2017:
+        - Stateful packet processing with eBPF an implementation of OpenState interface (https://archive.fosdem.org/2017/schedule/event/stateful_ebpf/)
+        - gobpf - utilizing eBPF from Go (https://archive.fosdem.org/2017/schedule/event/go_bpf/)
+        - eBPF and XDP walkthrough and recent updates (https://archive.fosdem.org/2017/schedule/event/ebpf_xdp/)
+        - Cilium - BPF & XDP for containers (https://archive.fosdem.org/2017/schedule/event/cilium/)
+        - Stateful packet processing with eBPF (https://archive.fosdem.org/2017/schedule/event/stateful_ebpf/)
+
+    - 2018:
+        - The challenges of XDP hardware offload (https://archive.fosdem.org/2018/schedule/event/xdp/)
+        - Fast Packet Processing in Linux with AF_XDP (https://archive.fosdem.org/2018/schedule/event/af_xdp/)
+
+    - 2019:
+        - Introducing kubectl-trace (https://archive.fosdem.org/2019/schedule/event/containers_kubectl_trace/)
+        - Rewriting Pointer Dereferences in bcc with Clang (https://archive.fosdem.org/2019/schedule/event/llvm_bpf_rewriting/)
+        - Using eBPF for Linux Performance Analyses (https://archive.fosdem.org/2019/schedule/event/using_ebpf_for_linux_performance_analyses/)
+        - XDP (eXpress Data Path) as a building block for other FOSS projects (https://archive.fosdem.org/2019/schedule/event/xdp_overview_and_update/)
+        - Cilium - overview and recent updates (https://archive.fosdem.org/2019/schedule/event/cilium_overview_and_updates/)
+        - Merging System and Network Monitoring with BPF (https://archive.fosdem.org/2019/schedule/event/merging_system_and_network_monitoring_with_bpf/)
+        - Unifying network filtering rules for the Linux kernel with eBPF (https://archive.fosdem.org/2019/schedule/event/network_filtering_with_bpf/)
+        - Oko: Open vSwitch Extensions with BPF (https://archive.fosdem.org/2019/schedule/event/oko_open_vswitch_extensions_with_bpf/)
+        - eBPF powered Distributed Kubernetes performance analysis (https://archive.fosdem.org/2019/schedule/event/ebpf_kubernetes/)
+
+    - 2020:
+        - BPF as a revolutionary technology for the container landscape (https://archive.fosdem.org/2020/schedule/event/containers_bpf/)
+        - Inspektor Gadget and traceloop (https://archive.fosdem.org/2020/schedule/event/containers_bpf_tracing/)
+        - strace --seccomp-bpf: a look under the hood (https://archive.fosdem.org/2020/schedule/event/debugging_strace_bpf/)
+        - Tools and mechanisms to debug BPF programs (https://archive.fosdem.org/2020/schedule/event/debugging_bpf/)
+        - Falco Internals 101 : Syscalls processing for security analysis (https://archive.fosdem.org/2020/schedule/event/security_falco_internals_101/)
+        - seccomp — Your Next Layer of Defense (https://archive.fosdem.org/2020/schedule/event/security_seccomp/)
+        - Kernel Runtime Security Instrumentation (https://archive.fosdem.org/2020/schedule/event/security_kernel_runtime_security_instrumentation/)
+        - Endless Network Programming − An Update from eBPF Land (https://archive.fosdem.org/2020/schedule/event/endless_network_programming/)
+        - Replacing iptables with eBPF in Kubernetes with Cilium (https://archive.fosdem.org/2020/schedule/event/replacing_iptables_with_ebpf/)
+        - Analyzing DPDK applications with eBPF (https://archive.fosdem.org/2020/schedule/event/analyzing_dpdk_applications_with_ebpf/)
+        - XDP and page_pool API (https://archive.fosdem.org/2020/schedule/event/xdp_and_page_pool_api/)
+        - Mixing kool-aids! Accelerate the internet with AF_XDP & DPDK (https://archive.fosdem.org/2020/schedule/event/mixing_kool_aids/)
+        - Vita: high-speed traffic encryption on x86_64 with Snabb (https://archive.fosdem.org/2020/schedule/event/vita_high_speed_traffic_encryption_on_x86_64/)
+
+    - 2021:
+        - Advanced BPF kernel features for the container age (https://archive.fosdem.org/2021/schedule/event/containers_ebpf_kernel/)
+        - Monitoring MariaDB Server with bpftrace on Linux (https://archive.fosdem.org/2021/schedule/event/mariadb_bpftrace/ )
+        - hXDP: Efficient Software Packet Processing on FPGA NICs (https://archive.fosdem.org/2021/schedule/event/sdn_hxdp_fpga/)
+        - Deploying eBPF, XDP & AF_XDP for Cloud Native (https://archive.fosdem.org/2021/schedule/event/sdn_ebpf_afxdp/)
+        - Seccomp Notify on Kubernetes (https://archive.fosdem.org/2021/schedule/event/containers_k8s_seccomp_notify/)
+
+    - 2022:
+        - ply: lightweight eBPF tracing (https://archive.fosdem.org/2022/schedule/event/ply_ebpf/)
+        - Coverage for eBPF programs (https://archive.fosdem.org/2022/schedule/event/llvm_ebpf/)
+        - More on bpftrace for MariaDB DBAs and Developers (https://archive.fosdem.org/2022/schedule/event/mariadb_bfptrace/)
+        - Monitoring Kafka without instrumentation using eBPF (https://archive.fosdem.org/2022/schedule/event/monitoring_kafka_using_ebpf/)
