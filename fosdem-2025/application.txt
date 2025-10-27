@@ -1,4 +1,5 @@
 eBPF Devroom Proposal
+=====================
 
 eBPF is a technology originally developed to make the Linux kernel more programmable. It allows users to load safe and efficient programs into the kernel, to attach them to various hooks, and to run these programs on specific events to address multiple goals. When attached to kernel or user functions, eBPF brings visibility for tracing and monitoring. Attached to networking hooks, eBPF programs can encapsulate, redirect, drop, or forward packets, working in concert with the kernel stack. The BPF LSM makes it possible to implement security policies. Various other attach points provide new ways to bring programmability to the kernel.
 
@@ -21,6 +22,7 @@ Topics of interest include (but are not limited to):
 - eBPF community efforts (documentation, standardisation, cross-platform initiatives)
 
 Why does it fit FOSDEM:
+-----------------------
 
 eBPF complies well with the open source aspects of FOSDEM: Its whole ecosystem is open-source. eBPF programs themselves are usually GPL or GPL-compatible, so they can interface with the Linux kernel. All known runtimes (even for hardware offloads) are open-source, and so are the majority of the projects using eBPF.
 
@@ -31,6 +33,7 @@ eBPF is also under active development and its infrastructure keeps evolving. Rec
 Multiple projects are under active development, and new eBPF-based projects keep emerging. Therefore, there is a strong interest in the eBPF community to gather and talk, to discuss the progress of the various projects, and to share with all the people who may be interested.
 
 Organizers and their affinity to the topic:
+-------------------------------------------
 
 - Quentin Monnet
     - Quentin has been working with eBPF since its early days, contributing across three companies: using it for stateful packet processing at 6WIND, working on eBPF hardware offload at Netronome, and worked on the datapath of Cilium. He has authored 250+ eBPF-related kernel patches, maintains bpftool, created rbpf (a Rust-based runtime), and has contributed to the documentation and standardization of eBPF. He frequently writes about eBPF on various blogs (personal blog, company maintained blogs, ebpf.io) and has spoken on the topic, including five talks at FOSDEM.
@@ -42,6 +45,7 @@ Organizers and their affinity to the topic:
     - I am a software engineer at SiteGround, I’ve given several talks about eBPF and I am an active member of the eBPF and CNCF communities. I've been working with eBPF (XDP, high performance software defined networking) for the past few years.
 
 Relevant URLs:
+--------------
 
 - eBPF website: https://ebpf.io
 

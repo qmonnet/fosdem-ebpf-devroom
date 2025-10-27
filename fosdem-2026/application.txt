@@ -1,0 +1,61 @@
+eBPF Devroom Proposal
+=====================
+
+eBPF is a technology originally developed to make the Linux kernel more programmable. It allows users to load safe and efficient programs into the kernel, to attach them to various hooks, and to run these programs on specific events to address multiple goals. When attached to kernel or user functions, eBPF brings visibility for tracing and monitoring. Attached to networking hooks, eBPF programs can encapsulate, redirect, drop, or forward packets, working in concert with the kernel stack. The BPF LSM makes it possible to implement security policies. Various other attach points provide new ways to bring programmability to the kernel.
+
+Today, eBPF is no longer limited to Linux; it extends to Windows, user-space runtimes, and even hardware offloads. The depth of the ecosystem has expanded far beyond its original goals and has seen increasing adoption from both enthusiasts and professionals within the open-source community. In parallel, the list of use cases and related projects continues to grow. Following the success of last year’s Devroom, we would like to renew our proposal for a FOSDEM Devroom dedicated to the work, tools, and use cases surrounding eBPF.
+
+Topics of interest include (but are not limited to):
+
+- eBPF development: recent or proposed features (on Linux, on other platforms, or even cross-platforms), such as:
+    - eBPF program signing and supply chain security
+    - Profiling eBPF with eBPF
+    - eBPF-based process schedulers
+    - eBPF in storage devices
+    - eBPF verifier improvements or alternative implementations
+- Deep-dives on existing eBPF features
+- Working with eBPF: best practices, common mistakes, debugging, etc.
+- eBPF toolchain, for compiling, managing, debugging, packaging, and deploying eBPF programs and related objects
+- eBPF libraries, in C/C++, Go, Rust, or other languages
+- eBPF-based projects, related use cases
+- eBPF in the real world, production use cases and their impact
+- eBPF community efforts (documentation, standardisation, cross-platform initiatives)
+
+Why does this proposal fit FOSDEM:
+----------------------------------
+
+eBPF complies well with the open source aspects of FOSDEM: Its whole ecosystem is open-source. eBPF programs themselves are usually GPL or GPL-compatible, so they can interface with the Linux kernel. All known runtimes (even for hardware offloads) are open-source, and so are the majority of the projects using eBPF.
+
+eBPF is of interest to a vast and growing number of users. The number of open-source projects based on the technology keeps expanding (see https://ebpf.io/applications/), and an increasing number of platforms can run it: Linux, Windows, user space runtimes, hardware offloads, and likely more to come. Similarly, adoption within the industry is growing fast. The numerous use cases for eBPF overlap with more and more topics that have proved relevant to FOSDEM in the past: monitoring, networking, containers, security, LLVM/tooling, Go and Rust programming (see the list of previous FOSDEM talks in the “Relevant URLs” section), to the point that after more than 50 eBPF-related talks at FOSDEM, it made sense to propose a dedicated Devroom: during FOSDEM 2025, we held the first edition of the eBPF Devroom.
+
+eBPF is also under active development and its infrastructure keeps evolving. Recent features in Linux include dynamic pointers, memory allocator, new program types, better support for loops, a sparse shared memory region, controlling the CPU scheduler, tokens for enabling controlled eBPF usage from containers, cookies for contextual hints, generic iterators, enhanced HID support via HID-BPF and many others. eBPF is also under continuous development in the Windows project, actively closing the gap.
+
+Multiple projects are under active development, and new eBPF-based projects keep emerging. There is a strong interest in the eBPF community to gather and talk, to discuss the progress of the various projects, and to share with all the people who may be interested. We got confirmation of this interest with the success of last year’s Devroom: the room was completely full of attendees all afternoon, and all we heard back was excellent. We hope to have a chance to renew the experience in 2026!
+
+Our proposal is submitted in the half day category, as we're aware of the high level of interest and the large number of Devroom submissions. That said, given the number of talks we had to decline last year, we wanted to note that the Devroom could comfortably span a full day, in the unlikely case a full day was available.
+
+Prefered slot:
+--------------
+
+Saturday afternoon
+
+Submitters affinity to the topic:
+---------------------------------
+
+- Quentin Monnet
+    - Quentin has been working with eBPF since its early days, contributing across three companies: using it for stateful packet processing at 6WIND, working on eBPF hardware offload at Netronome, and working on the datapath of Cilium. He has authored 250+ eBPF-related kernel patches, maintains bpftool, created rbpf (a Rust-based runtime), and has contributed to the documentation and standardization of eBPF. He frequently writes about eBPF on various blogs (personal blog, company maintained blogs, ebpf.io) and has presented on the topic, including five talks at FOSDEM.
+- Daniel Borkmann
+    - Daniel currently works at Isovalent. He is a co-author and co-maintainer of the eBPF subsystem in Linux, as well as a member of the BPF Steering Committee at the eBPF Foundation.
+- Dimitar Kanaliev
+    - I am a software engineer at SiteGround, I’ve given several talks about eBPF and I am an active member of the eBPF and CNCF communities. I've been working with eBPF (XDP, high performance software defined networking) for the past few years.
+
+Relevant URLS:
+--------------
+
+- eBPF website: https://ebpf.io
+
+- Non-exhaustive list of eBPF-based projects: https://ebpf.io/applications
+
+- FOSDEM 2025 eBPF Devroom session: https://archive.fosdem.org/2025/schedule/track/ebpf/
+
+- List of previous BPF-related talks at FOSDEM, from 20217 to 2024 (we probably missed a few): https://github.com/qmonnet/fosdem-ebpf-devroom/blob/main/fosdem-2025/application.txt#L56
